@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BigBuum · Workshop Londres · Joymara Grillo</title>
+  <meta name="description" content="Domine a Subcisão de Glúteo com Joymara Grillo. Imersão exclusiva em Mayfair, Londres. 10 de Maio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════
+       RESET & ROOT
+    ══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:        #931f22;
+      --red-dark:   #6e1518;
+      --bg:         #f7f7f7;
+      --bg-card:    #eeeeee;
+      --bg-dark:    #1a1210;
+      --text:       #1a1410;
+      --text-mid:   #5a4f47;
+      --text-light: #9a8f87;
+      --white:      #ffffff;
+      --line:       rgba(26,20,16,.1);
+      --r-sm:  12px;
+      --r-md:  20px;
+      --r-lg:  28px;
+      --r-xl:  36px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 99px; }
+
+    /* ══════════════════════════════════════
+       SECTION LABEL
+    ══════════════════════════════════════ */
+    .lbl {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .lbl::before {
+      content: '';
+      width: 18px; height: 1.5px;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .lbl--light { color: rgba(255,255,255,.45); }
+    .lbl--light::before { background: rgba(255,255,255,.45); }
+
+    /* ══════════════════════════════════════
+       BUTTONS — mobile-first, fully responsive
+    ══════════════════════════════════════ */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      text-align: center;
+      text-decoration: none;
+      line-height: 1.2;
+      padding: 16px 24px;
+      min-height: 52px;
+      border-radius: var(--r-sm);
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .18s, box-shadow .2s, opacity .2s;
+      overflow: hidden;
+      word-break: break-word;
+      hyphens: auto;
+    }
+    .btn:active { transform: scale(.97); }
+
+    .btn--solid {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(147,31,34,.3);
+    }
+    .btn--solid:hover {
+      background: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(147,31,34,.38);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.35);
+    }
+    .btn--ghost:hover {
+      border-color: #fff;
+      background: rgba(255,255,255,.08);
+    }
+
+    @media (min-width: 480px) {
+      .btn { width: auto; display: inline-flex; }
+      .btn--full { width: 100%; display: flex; }
+    }
+
+    /* ══════════════════════════════════════
+       DIVIDER
+    ══════════════════════════════════════ */
+    .hr { border: none; border-top: 1px solid var(--line); }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh; /* Chrome Android, Samsung, Vivaldi, Opera, Firefox */
+      min-height: 100svh; /* Safari iOS — barra de abas sempre visível */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      /* padding-bottom respeita barra inferior do browser (home indicator, nav bar) */
+      padding: 0 0 max(52px, calc(env(safe-area-inset-bottom, 0px) + 36px));
+      overflow: hidden;
+      border-radius: 0 0 var(--r-xl) var(--r-xl);
+    }
+
+    .hero__img {
+      position: absolute;
+      inset: 0;
+      background:
+        url('img/joyheader1.png')
+        center center / cover no-repeat;
+      z-index: 0;
+    }
+    .hero__img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(15,8,6,.78) 0%,
+        rgba(15,8,6,.28) 45%,
+        transparent 100%
+      );
+    }
+    @media (max-width: 767px) {
+      .hero__img {
+        background-image: url('img/joyheader1-mobile.png');
+        background-position: center 20%;
+      }
+      .hero {
+        min-height: 120svh;
+      }
+    }
+
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(147,31,34,.07) 0, rgba(147,31,34,.07) 1px, transparent 1px, transparent 80px),
+        repeating-linear-gradient(0deg,  rgba(147,31,34,.07) 0, rgba(147,31,34,.07) 1px, transparent 1px, transparent 80px);
+      mask-image: linear-gradient(to top, black 0%, transparent 55%);
+      -webkit-mask-image: linear-gradient(to top, black 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero__body {
+      position: relative;
+      z-index: 10;
+      /* padding-top compensa: navbar fixa (60px) + safe-area-inset-top
+         (notch/barra de status) + folga extra (16px).
+         env() com fallback 0px funciona em todos os browsers. */
+      padding: max(76px, calc(env(safe-area-inset-top, 0px) + 60px)) 20px 0;
+      width: 100%;
+    }
+
+    .hero__tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      background: rgba(147,31,34,.55);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(147,31,34,.4);
+      border-radius: 99px;
+      padding: 6px 16px;
+      margin-bottom: 20px;
+    }
+
+    .hero__h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 10vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: .02em;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hero__h1 em {
+      font-style: normal;
+      color: var(--red);
+      text-shadow: 0 0 32px rgba(147,31,34,.45);
+    }
+
+    .hero__sub {
+      font-size: .95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 480px;
+    }
+
+    .hero__bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .hero__bullets li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .88rem;
+      color: rgba(255,255,255,.65);
+    }
+    .hero__bullets li::before {
+      content: '';
+      width: 16px; height: 1.5px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero__micro {
+      font-family: 'DM Mono', monospace;
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      text-align: center;
+    }
+
+    @media (min-width: 480px) {
+      .hero__actions { flex-direction: row; align-items: center; flex-wrap: wrap; }
+      .hero__micro   { text-align: left; }
+    }
+    @media (min-width: 768px) {
+      .hero        { justify-content: center; padding-bottom: 72px; }
+      .hero__body  { max-width: 560px; margin: 0 auto 0 10%; padding: 0 40px; }
+    }
+
+    /* ══════════════════════════════════════
+       PROOF / AUTORIDADE
+    ══════════════════════════════════════ */
+    .proof {
+      padding: 60px 20px;
+    }
+
+    .proof__head { margin-bottom: 36px; }
+
+    .proof__h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 12vw, 5rem);
+      line-height: 1;
+      letter-spacing: .03em;
+      color: var(--text);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .proof__h2 span { color: var(--red); }
+
+    .proof__p {
+      font-size: .93rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    @media (min-width: 480px) {
+      .gallery { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .proof {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 88px 40px;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 64px;
+        align-items: start;
+      }
+      .proof__head { margin-bottom: 0; }
+      .gallery { grid-template-columns: repeat(3, 1fr); margin-bottom: 0; }
+    }
+
+    .gcard {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      background: var(--bg-card);
+      box-shadow: 0 2px 10px rgba(26,20,16,.07);
+    }
+    .gcard img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 1.6s ease-in-out;
+    }
+    .gcard img.antes  { opacity: 1; z-index: 1; }
+    .gcard img.depois { opacity: 0; z-index: 2; }
+    .gcard.show-depois img.antes  { opacity: 0; }
+    .gcard.show-depois img.depois { opacity: 1; }
+    .gcard img.static {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* ── Botão revelar resultado ── */
+    .fade-card { cursor: pointer; }
+    .gcard__reveal {
+      position: absolute;
+      bottom: 9px; right: 9px;
+      z-index: 5;
+      background: var(--red);
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: .52rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: 99px;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: background .2s, opacity .2s;
+    }
+    .fade-card:hover .gcard__reveal { background: var(--red-dark); }
+    .fade-card.show-depois .gcard__reveal { background: rgba(26,20,16,.72); }
+
+    /* ══════════════════════════════════════
+       FORM
+    ══════════════════════════════════════ */
+    .form-wrap {
+      background: var(--bg-dark);
+      border-radius: var(--r-xl);
+      margin: 0 12px 12px;
+      padding: 52px 20px;
+    }
+
+    .form-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 12vw, 5rem);
+      line-height: 1;
+      letter-spacing: .03em;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .form-sub {
+      font-size: .88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.45);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .fld { margin-bottom: 14px; }
+    .fld label {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: 6px;
+    }
+    .fld input {
+      width: 100%;
+      background: rgba(255,255,255,.05);
+      border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: var(--r-sm);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 14px 15px;
+      outline: none;
+      -webkit-appearance: none;
+      transition: border-color .2s, background .2s;
+    }
+    .fld input::placeholder { color: rgba(255,255,255,.18); }
+    .fld input:focus {
+      border-color: var(--red);
+      background: rgba(147,31,34,.07);
+    }
+
+    #form-error {
+      display: none;
+      font-size: .8rem;
+      color: #e08080;
+      margin: 10px 0;
+      padding: 10px 14px;
+      border: 1px solid rgba(224,128,128,.25);
+      background: rgba(224,128,128,.06);
+      border-radius: var(--r-sm);
+    }
+
+    .btn-submit {
+      width: 100%;
+      display: flex;
+      margin-top: 10px;
+    }
+    .btn-submit.loading { opacity: .6; pointer-events: none; }
+
+    .form-note {
+      margin-top: 14px;
+      font-size: .72rem;
+      color: rgba(255,255,255,.2);
+      text-align: center;
+    }
+
+    @media (min-width: 600px) {
+      .form-wrap { padding: 64px 40px; margin: 0 20px 20px; }
+    }
+    @media (min-width: 900px) {
+      .form-wrap {
+        margin: 0 32px 32px;
+        padding: 72px 72px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+      }
+      .form-sub { margin-bottom: 0; }
+    }
+
+    /* ══════════════════════════════════════
+       BIO / MENTORA
+    ══════════════════════════════════════ */
+    .bio-wrap {
+      position: relative;
+      border-radius: var(--r-xl);
+      margin: 12px 12px;
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 44px 20px;
+    }
+    .bio-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        url('img/joy01.png')
+        center center / cover no-repeat;
+      z-index: 0;
+    }
+    @media (max-width: 767px) {
+      .bio-wrap::before {
+        background-image: url('img/joy01-mobile.png');
+        background-position: center top;
+      }
+    }
+    .bio-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(15,8,6,.78) 0%,
+        rgba(15,8,6,.28) 55%,
+        transparent 100%);
+      z-index: 1;
+    }
+
+    .bio-body {
+      position: relative;
+      z-index: 10;
+    }
+    .bio-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 12vw, 5rem);
+      line-height: 1;
+      letter-spacing: .03em;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .bio-name span { color: var(--red); }
+    .bio-p {
+      font-size: .9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.68);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 420px;
+    }
+    @media (min-width: 600px) {
+      .bio-wrap { margin: 20px 20px; padding: 60px 40px; }
+    }
+    @media (min-width: 900px) {
+      .bio-wrap { margin: 32px 32px; padding: 72px 60px; min-height: 580px; }
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      padding: 28px 20px max(28px, env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 5px;
+    }
+    footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: .6rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    @media (min-width: 600px) {
+      footer { flex-direction: row; justify-content: center; gap: 32px; padding: 32px 40px; }
+    }
+
+    /* ══════════════════════════════════════
+       MODAL — bottom sheet on mobile
+    ══════════════════════════════════════ */
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,8,6,.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0 0 env(safe-area-inset-bottom);
+    }
+    .modal-bg.open { display: flex; }
+
+    .modal-box {
+      background: var(--white);
+      border-radius: var(--r-xl) var(--r-xl) var(--r-lg) var(--r-lg);
+      width: 100%;
+      max-width: 500px;
+      padding: 44px 24px 36px;
+      text-align: center;
+      position: relative;
+      animation: sheetUp .38s cubic-bezier(.32,1.1,.68,1) both;
+    }
+    @keyframes sheetUp {
+      from { transform: translateY(60px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px; right: 16px;
+      background: var(--bg-card);
+      border: none;
+      color: var(--text-mid);
+      font-size: .95rem;
+      cursor: pointer;
+      width: 30px; height: 30px;
+      border-radius: 99px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-icon { font-size: 1.9rem; margin-bottom: 14px; }
+    .modal-h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.3rem;
+      letter-spacing: .04em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .modal-p {
+      font-size: .88rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 26px;
+    }
+    .modal-cta {
+      width: 100%;
+      display: flex;
+      padding: 16px 20px;
+    }
+
+    /* ══════════════════════════════════════
+       ENTER ANIMATIONS
+    ══════════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero__tag     { animation: fadeUp .55s .08s  both; }
+    .hero__h1      { animation: fadeUp .55s .2s   both; }
+    .hero__sub     { animation: fadeUp .55s .32s  both; }
+    .hero__bullets { animation: fadeUp .55s .42s  both; }
+    .hero__actions { animation: fadeUp .55s .52s  both; }
+
+    /* ══════════════════════════════════════
+       SAFE AREA
+    ══════════════════════════════════════ */
+    /* ── Mobile browser UI compensation ─────────────────────────────────────
+       Navegadores Android (Chrome, Samsung, Vivaldi, Opera, Firefox):
+         Barra de pesquisa topo: ~56–72px | Barra inferior: ~48–56px
+       Safari iOS:
+         Barra top (com abas): ~88–108px | Barra inferior: ~34–83px
+       Todos cobertos por env(safe-area-inset-*) + min fixo como fallback.
+    ──────────────────────────────────────────────────────────────────────── */
+    .hero {
+      padding-bottom: max(52px, calc(env(safe-area-inset-bottom, 0px) + 36px));
+    }
+    /* Safari iOS adiciona safe-area-inset-top grande por causa das abas */
+    @supports (padding-top: env(safe-area-inset-top)) {
+      .hero__body {
+        padding-top: max(76px, calc(env(safe-area-inset-top) + 60px));
+      }
+    }
+    /* Landscape: compensar safe-area nos lados (notch lateral no iPhone) */
+    @media (orientation: landscape) and (max-width: 900px) {
+      .hero__body {
+        padding-left:  max(20px, calc(env(safe-area-inset-left,  0px) + 20px));
+        padding-right: max(20px, calc(env(safe-area-inset-right, 0px) + 20px));
+        padding-top:   max(56px, calc(env(safe-area-inset-top,   0px) + 48px));
+      }
+      .hero {
+        min-height: 100lvh;
+        padding-bottom: max(28px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+      }
+    }
+  
+    /* ══════════════════════════════════════
+       DDI — INTERNATIONAL PHONE SELECTOR
+    ══════════════════════════════════════ */
+    .phone-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .phone-row input[type="tel"] {
+      flex: 1;
+      min-width: 0;
+      width: auto;
+    }
+    .ddi-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .ddi-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 12px;
+      height: 100%;
+      min-width: 88px;
+      background: rgba(255,255,255,.05);
+      border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: var(--r-sm);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .93rem;
+      cursor: pointer;
+      outline: none;
+      transition: border-color .2s, background .2s;
+      white-space: nowrap;
+    }
+    .ddi-btn:hover, .ddi-btn:focus { border-color: var(--red); background: rgba(147,31,34,.07); }
+    .ddi-btn.open                  { border-color: var(--red); background: rgba(147,31,34,.1);  }
+    .ddi-flag  { font-size: 1.15rem; line-height: 1; }
+    .ddi-code  { font-family: 'DM Mono', monospace; font-size: .78rem; letter-spacing: .04em; }
+    .ddi-arrow { width: 10px; height: 6px; color: rgba(255,255,255,.35); transition: transform .22s; flex-shrink: 0; }
+    .ddi-btn.open .ddi-arrow { transform: rotate(180deg); }
+
+    .ddi-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      width: 272px;
+      max-height: 318px;
+      background: #1e1614;
+      border: 1.5px solid rgba(255,255,255,.11);
+      border-radius: var(--r-sm);
+      z-index: 999;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 14px 48px rgba(0,0,0,.55);
+      overflow: hidden;
+    }
+    .ddi-dropdown.open { display: flex; }
+
+    .ddi-search-wrap {
+      padding: 10px 10px 8px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      flex-shrink: 0;
+    }
+    .ddi-search {
+      width: 100%;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .82rem;
+      padding: 8px 12px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .ddi-search::placeholder { color: rgba(255,255,255,.22); }
+    .ddi-search:focus { border-color: var(--red); }
+
+    .ddi-list {
+      list-style: none;
+      overflow-y: auto;
+      flex: 1;
+      padding: 5px 0;
+    }
+    .ddi-list::-webkit-scrollbar       { width: 3px; }
+    .ddi-list::-webkit-scrollbar-track { background: transparent; }
+    .ddi-list::-webkit-scrollbar-thumb { background: var(--red); border-radius: 99px; }
+
+    .ddi-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      cursor: pointer;
+      transition: background .13s;
+      font-size: .86rem;
+      color: rgba(255,255,255,.72);
+    }
+    .ddi-item:hover    { background: rgba(255,255,255,.06); color: #fff; }
+    .ddi-item.selected { background: rgba(147,31,34,.18); color: #fff; }
+    .ddi-item__flag    { font-size: 1rem; }
+    .ddi-item__name    { flex: 1; }
+    .ddi-item__code    { font-family: 'DM Mono', monospace; font-size: .7rem; color: rgba(255,255,255,.3); }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero">
+  <div class="hero__img"></div>
+  <div class="hero__grid"></div>
+
+  <div class="hero__body">
+    <div class="hero__tag">Workshop Presencial · Londres</div>
+
+    <h1 class="hero__h1">
+      O método brasileiro<br />
+      que <em>revolucionou</em><br />
+      a harmonização<br />de glúteos.
+    </h1>
+
+    <p class="hero__sub">
+      Domine a Subcisão de Glúteo com Joymara Grillo. Aprenda o Método BigBuum em uma imersão exclusiva em Mayfair.
+    </p>
+
+    <ul class="hero__bullets">
+      <li>Diferencial competitivo no mercado europeu</li>
+      <li>Estratégias para escalar o faturamento da clínica</li>
+    </ul>
+
+    <div class="hero__actions">
+      <a href="#inscricao" class="btn btn--solid">Quero garantir minha vaga</a>
+      <span class="hero__micro">14 Hanover Square · 10 de Maio</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ SOCIAL PROOF ══════════════════════ -->
+<section class="proof" id="resultados">
+
+  <div class="proof__head">
+    <p class="lbl">Autoridade</p>
+    <h2 class="proof__h2">Resultados<br />que <span>cruzaram</span><br />fronteiras.</h2>
+    <p class="proof__p">
+      Joymara Grillo é a mente por trás do BigBuum. Empresária e mentora, transformou a estética avançada em um modelo de negócio internacional. O que você aprenderá é o método validado em anos de prática clínica.
+    </p>
+    <a href="#inscricao" class="btn btn--solid btn--full">Quero aprender com a Joymara</a>
+  </div>
+
+  <div>
+    <div class="gallery">
+      <div class="gcard fade-card">
+        <img class="antes" src="img/antes1.png" alt="Antes 1" />
+        <img class="depois" src="img/depois1.png" alt="Depois 1" />
+        <span class="gcard__reveal">Ver resultado →</span>
+      </div>
+      <div class="gcard fade-card">
+        <img class="antes" src="img/antes2.png" alt="Antes 2" />
+        <img class="depois" src="img/depois2.png" alt="Depois 2" />
+        <span class="gcard__reveal">Ver resultado →</span>
+      </div>
+      <div class="gcard fade-card">
+        <img class="antes" src="img/antes3.png" alt="Antes 3" />
+        <img class="depois" src="img/depois3.png" alt="Depois 3" />
+        <span class="gcard__reveal">Ver resultado →</span>
+      </div>
+      <div class="gcard fade-card">
+        <img class="antes" src="img/antes4.png" alt="Antes 4" />
+        <img class="depois" src="img/depois4.png" alt="Depois 4" />
+        <span class="gcard__reveal">Ver resultado →</span>
+      </div>
+      <div class="gcard">
+        <img class="static" src="img/imerssao.png" alt="Imersão" />
+      </div>
+      <div class="gcard">
+        <img class="static" src="img/evento.png" alt="Eventos" />
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════ FORMULÁRIO ══════════════════════ -->
+<div class="form-wrap" id="inscricao">
+
+  <div>
+    <p class="lbl lbl--light">Inscrição</p>
+    <h2 class="form-h2">Reserve<br />sua vaga.</h2>
+    <p class="form-sub">Preencha os dados e aguarde o contato da nossa equipe.</p>
+  </div>
+
+  <div>
+    <form id="bigbuum-form" novalidate>
+      <div class="fld">
+        <label for="f-name">Nome</label>
+        <input type="text" id="f-name" name="name" placeholder="Seu nome completo" required autocomplete="name" />
+      </div>
+      <div class="fld">
+        <label for="f-email">E-mail</label>
+        <input type="email" id="f-email" name="email" placeholder="seu@email.com" required autocomplete="email" />
+      </div>
+      <div class="fld">
+        <label for="f-phone">WhatsApp</label>
+        <div class="phone-row">
+          <div class="ddi-wrap" id="ddi-wrap">
+            <button type="button" class="ddi-btn" id="ddi-btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="ddi-flag" id="ddi-flag">🇧🇷</span>
+              <span class="ddi-code" id="ddi-code">+55</span>
+              <svg class="ddi-arrow" viewBox="0 0 12 7" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="ddi-dropdown" id="ddi-dropdown" role="listbox" aria-label="Selecione o país">
+              <div class="ddi-search-wrap">
+                <input type="text" class="ddi-search" id="ddi-search" placeholder="Buscar país…" autocomplete="off" />
+              </div>
+              <ul class="ddi-list" id="ddi-list"></ul>
+            </div>
+          </div>
+          <input type="tel" id="f-phone" name="phone" placeholder="(11) 91234-5678" required autocomplete="tel" inputmode="numeric" />
+        </div>
+      </div>
+      <div id="form-error"></div>
+      <button type="submit" class="btn btn--solid btn-submit" id="submit-btn">Confirmar Inscrição</button>
+    </form>
+    <p class="form-note">🔒 Seus dados são protegidos e nunca serão compartilhados.</p>
+  </div>
+
+</div>
+
+<!-- ══════════════════════ BIO / MENTORA ══════════════════════ -->
+<div class="bio-wrap" id="mentora">
+  <div class="bio-body">
+    <p class="lbl" style="color:rgba(255,255,255,.45);">Sobre a Mentora</p>
+    <div class="bio-name">Joymara<br /><span>Grillo</span></div>
+    <p class="bio-p">
+      Criadora do Método BigBuum e referência internacional em harmonização corporal. Especialista em elevar o padrão de entrega estética e faturamento de clínicas de alto nível.
+    </p>
+    <a href="#inscricao" class="btn btn--ghost">Garantir minha vaga · 10 de Maio</a>
+  </div>
+</div>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  <p>© 2025 Joymara Grillo · Método BigBuum</p>
+  <p>14 Hanover Square, Mayfair · 10 de Maio · Londres</p>
+</footer>
+
+<!-- ══════════════════════ MODAL ══════════════════════ -->
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Fechar">&times;</button>
+    <div class="modal-icon">✅</div>
+    <h3 class="modal-h3" id="modal-title">Tudo certo!</h3>
+    <p class="modal-p">Recebemos seus dados. Nossa equipe entrará em contato em breve para os próximos passos.</p>
+    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer"
+       class="btn btn--solid modal-cta">
+      Falar com suporte via WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════════════ SCRIPTS ══════════════════════ -->
+<script>
+(function () {
+  function getAllUTMs() {
+    var p = new URLSearchParams(window.location.search);
+    return {
+      utm_source:   p.get('utm_source')   || '',
+      utm_medium:   p.get('utm_medium')   || '',
+      utm_campaign: p.get('utm_campaign') || '',
+      utm_term:     p.get('utm_term')     || '',
+      utm_content:  p.get('utm_content')  || '',
+    };
+  }
+
+  /* ── DDI Countries ── */
+  var COUNTRIES = [
+    // ─── AMERICAS ───────────────────────────────────────────────────
+    { name: 'Brasil',                    flag: '🇧🇷', ddi: '+55',   masks: ['(XX) XXXX-XXXX','(XX) XXXXX-XXXX'],  placeholder: '(11) 91234-5678',   min: 10, max: 11 },
+    { name: 'Argentina',                 flag: '🇦🇷', ddi: '+54',   masks: ['(XXX) XXXX-XXXX'],                   placeholder: '(011) 1234-5678',  min: 10, max: 10 },
+    { name: 'Belize',                    flag: '🇧🇿', ddi: '+501',  masks: ['XXX XXXX'],                           placeholder: '622 1234',         min: 7,  max: 7  },
+    { name: 'Bolívia',                   flag: '🇧🇴', ddi: '+591',  masks: ['XXXX XXXX'],                          placeholder: '7123 4567',        min: 8,  max: 8  },
+    { name: 'Canadá',                    flag: '🇨🇦', ddi: '+1',    masks: ['(XXX) XXX-XXXX'],                    placeholder: '(416) 555-1234',   min: 10, max: 10 },
+    { name: 'Chile',                     flag: '🇨🇱', ddi: '+56',   masks: ['X XXXX XXXX'],                        placeholder: '9 1234 5678',      min: 9,  max: 9  },
+    { name: 'Colômbia',                  flag: '🇨🇴', ddi: '+57',   masks: ['XXX XXX XXXX'],                       placeholder: '312 345 6789',     min: 10, max: 10 },
+    { name: 'Costa Rica',                flag: '🇨🇷', ddi: '+506',  masks: ['XXXX XXXX'],                          placeholder: '8312 3456',        min: 8,  max: 8  },
+    { name: 'Cuba',                      flag: '🇨🇺', ddi: '+53',   masks: ['X XXX XXXX'],                         placeholder: '5 123 4567',       min: 8,  max: 8  },
+    { name: 'El Salvador',               flag: '🇸🇻', ddi: '+503',  masks: ['XXXX XXXX'],                          placeholder: '7012 3456',        min: 8,  max: 8  },
+    { name: 'Equador',                   flag: '🇪🇨', ddi: '+593',  masks: ['XXX XXX XXXX'],                       placeholder: '099 123 4567',     min: 10, max: 10 },
+    { name: 'EUA',                       flag: '🇺🇸', ddi: '+1',    masks: ['(XXX) XXX-XXXX'],                    placeholder: '(212) 555-1234',   min: 10, max: 10 },
+    { name: 'Guatemala',                 flag: '🇬🇹', ddi: '+502',  masks: ['XXXX XXXX'],                          placeholder: '5012 3456',        min: 8,  max: 8  },
+    { name: 'Guiana',                    flag: '🇬🇾', ddi: '+592',  masks: ['XXX XXXX'],                           placeholder: '623 4567',         min: 7,  max: 7  },
+    { name: 'Guiana Francesa',           flag: '🇬🇫', ddi: '+594',  masks: ['XXX XX XX XX'],                       placeholder: '069 12 34 56',     min: 9,  max: 9  },
+    { name: 'Haiti',                     flag: '🇭🇹', ddi: '+509',  masks: ['XXXX XXXX'],                          placeholder: '3412 3456',        min: 8,  max: 8  },
+    { name: 'Honduras',                  flag: '🇭🇳', ddi: '+504',  masks: ['XXXX XXXX'],                          placeholder: '9812 3456',        min: 8,  max: 8  },
+    { name: 'Jamaica',                   flag: '🇯🇲', ddi: '+1876', masks: ['XXX XXXX'],                           placeholder: '210 1234',         min: 7,  max: 7  },
+    { name: 'México',                    flag: '🇲🇽', ddi: '+52',   masks: ['(XX) XXXX-XXXX'],                    placeholder: '(55) 1234-5678',   min: 10, max: 10 },
+    { name: 'Nicarágua',                 flag: '🇳🇮', ddi: '+505',  masks: ['XXXX XXXX'],                          placeholder: '8412 3456',        min: 8,  max: 8  },
+    { name: 'Panamá',                    flag: '🇵🇦', ddi: '+507',  masks: ['XXXX XXXX'],                          placeholder: '6012 3456',        min: 8,  max: 8  },
+    { name: 'Paraguai',                  flag: '🇵🇾', ddi: '+595',  masks: ['XXX XXXXXX'],                         placeholder: '961 234567',       min: 9,  max: 9  },
+    { name: 'Peru',                      flag: '🇵🇪', ddi: '+51',   masks: ['XXX XXX XXX'],                        placeholder: '912 345 678',      min: 9,  max: 9  },
+    { name: 'Rep. Dominicana',           flag: '🇩🇴', ddi: '+1809', masks: ['XXX XXXX'],                           placeholder: '234 5678',         min: 7,  max: 7  },
+    { name: 'Suriname',                  flag: '🇸🇷', ddi: '+597',  masks: ['XXX XXXX'],                           placeholder: '741 2345',         min: 7,  max: 7  },
+    { name: 'Trinidad e Tobago',         flag: '🇹🇹', ddi: '+1868', masks: ['XXX XXXX'],                           placeholder: '291 2345',         min: 7,  max: 7  },
+    { name: 'Uruguai',                   flag: '🇺🇾', ddi: '+598',  masks: ['XXXX XXXX'],                          placeholder: '9123 4567',        min: 8,  max: 8  },
+    { name: 'Venezuela',                 flag: '🇻🇪', ddi: '+58',   masks: ['(XXX) XXX-XXXX'],                    placeholder: '(412) 123-4567',   min: 10, max: 10 },
+
+    // ─── EUROPA ─────────────────────────────────────────────────────
+    { name: 'Albânia',                   flag: '🇦🇱', ddi: '+355',  masks: ['XX XXX XXXX'],                        placeholder: '06 123 4567',      min: 9,  max: 9  },
+    { name: 'Alemanha',                  flag: '🇩🇪', ddi: '+49',   masks: ['XXXX XXXXXXX'],                       placeholder: '0151 2345678',     min: 10, max: 11 },
+    { name: 'Andorra',                   flag: '🇦🇩', ddi: '+376',  masks: ['XXX XXX'],                            placeholder: '312 345',          min: 6,  max: 6  },
+    { name: 'Armênia',                   flag: '🇦🇲', ddi: '+374',  masks: ['XX XXX XXX'],                         placeholder: '77 123 456',       min: 8,  max: 8  },
+    { name: 'Áustria',                   flag: '🇦🇹', ddi: '+43',   masks: ['XXX XXXXXXX'],                        placeholder: '0664 1234567',     min: 10, max: 10 },
+    { name: 'Azerbaijão',                flag: '🇦🇿', ddi: '+994',  masks: ['XX XXX XXXX'],                        placeholder: '50 123 4567',      min: 9,  max: 9  },
+    { name: 'Bélgica',                   flag: '🇧🇪', ddi: '+32',   masks: ['XXX XX XX XX'],                       placeholder: '0470 12 34 56',    min: 9,  max: 9  },
+    { name: 'Bielorrússia',              flag: '🇧🇾', ddi: '+375',  masks: ['XX XXX XX XX'],                       placeholder: '29 123 45 67',     min: 9,  max: 9  },
+    { name: 'Bósnia e Herzegovina',      flag: '🇧🇦', ddi: '+387',  masks: ['XX XXX XXX'],                         placeholder: '61 123 456',       min: 8,  max: 8  },
+    { name: 'Bulgária',                  flag: '🇧🇬', ddi: '+359',  masks: ['XXX XXX XXX'],                        placeholder: '087 123 456',      min: 9,  max: 9  },
+    { name: 'Chipre',                    flag: '🇨🇾', ddi: '+357',  masks: ['XXXX XXXX'],                          placeholder: '9612 3456',        min: 8,  max: 8  },
+    { name: 'Croácia',                   flag: '🇭🇷', ddi: '+385',  masks: ['XX XXX XXXX'],                        placeholder: '91 234 5678',      min: 9,  max: 9  },
+    { name: 'Dinamarca',                 flag: '🇩🇰', ddi: '+45',   masks: ['XX XX XX XX'],                        placeholder: '20 12 34 56',      min: 8,  max: 8  },
+    { name: 'Eslováquia',                flag: '🇸🇰', ddi: '+421',  masks: ['XXX XXX XXX'],                        placeholder: '091 234 567',      min: 9,  max: 9  },
+    { name: 'Eslovênia',                 flag: '🇸🇮', ddi: '+386',  masks: ['XX XXX XXX'],                         placeholder: '41 123 456',       min: 8,  max: 8  },
+    { name: 'Espanha',                   flag: '🇪🇸', ddi: '+34',   masks: ['XXX XXX XXX'],                        placeholder: '612 345 678',      min: 9,  max: 9  },
+    { name: 'Estônia',                   flag: '🇪🇪', ddi: '+372',  masks: ['XXXX XXXX'],                          placeholder: '5123 4567',        min: 8,  max: 8  },
+    { name: 'Finlândia',                 flag: '🇫🇮', ddi: '+358',  masks: ['XX XXX XXXX'],                        placeholder: '040 123 4567',     min: 9,  max: 9  },
+    { name: 'França',                    flag: '🇫🇷', ddi: '+33',   masks: ['XX XX XX XX XX'],                     placeholder: '06 12 34 56 78',   min: 10, max: 10 },
+    { name: 'Geórgia',                   flag: '🇬🇪', ddi: '+995',  masks: ['XXX XXX XXX'],                        placeholder: '555 123 456',      min: 9,  max: 9  },
+    { name: 'Grécia',                    flag: '🇬🇷', ddi: '+30',   masks: ['XXX XXX XXXX'],                       placeholder: '694 123 4567',     min: 10, max: 10 },
+    { name: 'Hungria',                   flag: '🇭🇺', ddi: '+36',   masks: ['XX XXX XXXX'],                        placeholder: '20 123 4567',      min: 9,  max: 9  },
+    { name: 'Irlanda',                   flag: '🇮🇪', ddi: '+353',  masks: ['XX XXX XXXX'],                        placeholder: '085 123 4567',     min: 9,  max: 9  },
+    { name: 'Islândia',                  flag: '🇮🇸', ddi: '+354',  masks: ['XXX XXXX'],                           placeholder: '611 2345',         min: 7,  max: 7  },
+    { name: 'Itália',                    flag: '🇮🇹', ddi: '+39',   masks: ['XXX XXX XXXX'],                       placeholder: '312 345 6789',     min: 10, max: 10 },
+    { name: 'Kosovo',                    flag: '🇽🇰', ddi: '+383',  masks: ['XX XXX XXX'],                         placeholder: '44 123 456',       min: 8,  max: 8  },
+    { name: 'Letônia',                   flag: '🇱🇻', ddi: '+371',  masks: ['XXXX XXXX'],                          placeholder: '2112 3456',        min: 8,  max: 8  },
+    { name: 'Liechtenstein',             flag: '🇱🇮', ddi: '+423',  masks: ['XXX XXXX'],                           placeholder: '660 1234',         min: 7,  max: 7  },
+    { name: 'Lituânia',                  flag: '🇱🇹', ddi: '+370',  masks: ['XXX XXXXX'],                          placeholder: '612 34567',        min: 8,  max: 8  },
+    { name: 'Luxemburgo',                flag: '🇱🇺', ddi: '+352',  masks: ['XXX XXX XXX'],                        placeholder: '621 123 456',      min: 9,  max: 9  },
+    { name: 'Macedônia do Norte',        flag: '🇲🇰', ddi: '+389',  masks: ['XX XXX XXX'],                         placeholder: '70 123 456',       min: 8,  max: 8  },
+    { name: 'Malta',                     flag: '🇲🇹', ddi: '+356',  masks: ['XXXX XXXX'],                          placeholder: '7912 3456',        min: 8,  max: 8  },
+    { name: 'Moldávia',                  flag: '🇲🇩', ddi: '+373',  masks: ['XXX XX XXX'],                         placeholder: '621 23 456',       min: 8,  max: 8  },
+    { name: 'Mônaco',                    flag: '🇲🇨', ddi: '+377',  masks: ['XXXX XXXX'],                          placeholder: '6012 3456',        min: 8,  max: 8  },
+    { name: 'Montenegro',                flag: '🇲🇪', ddi: '+382',  masks: ['XX XXX XXX'],                         placeholder: '67 123 456',       min: 8,  max: 8  },
+    { name: 'Noruega',                   flag: '🇳🇴', ddi: '+47',   masks: ['XXX XX XXX'],                         placeholder: '412 34 567',       min: 8,  max: 8  },
+    { name: 'Países Baixos',             flag: '🇳🇱', ddi: '+31',   masks: ['X XX XX XX XX'],                      placeholder: '6 12 34 56 78',    min: 9,  max: 9  },
+    { name: 'Polônia',                   flag: '🇵🇱', ddi: '+48',   masks: ['XXX XXX XXX'],                        placeholder: '512 345 678',      min: 9,  max: 9  },
+    { name: 'Portugal',                  flag: '🇵🇹', ddi: '+351',  masks: ['XXX XXX XXX'],                        placeholder: '912 345 678',      min: 9,  max: 9  },
+    { name: 'Reino Unido',               flag: '🇬🇧', ddi: '+44',   masks: ['XXXXX XXXXXX'],                       placeholder: '07911 123456',     min: 10, max: 11 },
+    { name: 'Rep. Tcheca',               flag: '🇨🇿', ddi: '+420',  masks: ['XXX XXX XXX'],                        placeholder: '601 234 567',      min: 9,  max: 9  },
+    { name: 'Romênia',                   flag: '🇷🇴', ddi: '+40',   masks: ['XXX XXX XXX'],                        placeholder: '072 123 456',      min: 9,  max: 9  },
+    { name: 'Rússia',                    flag: '🇷🇺', ddi: '+7',    masks: ['(XXX) XXX-XXXX'],                    placeholder: '(912) 345-6789',   min: 10, max: 10 },
+    { name: 'San Marino',                flag: '🇸🇲', ddi: '+378',  masks: ['XXXX XXXXXX'],                        placeholder: '0549 123456',      min: 10, max: 10 },
+    { name: 'Sérvia',                    flag: '🇷🇸', ddi: '+381',  masks: ['XX XXX XXXX'],                        placeholder: '60 123 4567',      min: 9,  max: 9  },
+    { name: 'Suécia',                    flag: '🇸🇪', ddi: '+46',   masks: ['XX XXX XXXX'],                        placeholder: '70 123 4567',      min: 9,  max: 9  },
+    { name: 'Suíça',                     flag: '🇨🇭', ddi: '+41',   masks: ['XX XXX XXXX'],                        placeholder: '79 123 4567',      min: 9,  max: 9  },
+    { name: 'Turquia',                   flag: '🇹🇷', ddi: '+90',   masks: ['XXX XXX XXXX'],                       placeholder: '532 123 4567',     min: 10, max: 10 },
+    { name: 'Ucrânia',                   flag: '🇺🇦', ddi: '+380',  masks: ['XX XXX XXXX'],                        placeholder: '50 123 4567',      min: 9,  max: 9  },
+
+    // ─── ÁSIA ────────────────────────────────────────────────────────
+    { name: 'Afeganistão',               flag: '🇦🇫', ddi: '+93',   masks: ['XXX XXX XXXX'],                       placeholder: '070 123 4567',     min: 10, max: 10 },
+    { name: 'Arábia Saudita',            flag: '🇸🇦', ddi: '+966',  masks: ['XX XXX XXXX'],                        placeholder: '51 234 5678',      min: 9,  max: 9  },
+    { name: 'Bangladesh',                flag: '🇧🇩', ddi: '+880',  masks: ['XXXX XXXXXX'],                        placeholder: '0171 234567',      min: 10, max: 10 },
+    { name: 'Brunei',                    flag: '🇧🇳', ddi: '+673',  masks: ['XXX XXXX'],                           placeholder: '712 3456',         min: 7,  max: 7  },
+    { name: 'Camboja',                   flag: '🇰🇭', ddi: '+855',  masks: ['XX XXX XXX'],                         placeholder: '12 345 678',       min: 8,  max: 8  },
+    { name: 'Cazaquistão',               flag: '🇰🇿', ddi: '+7',    masks: ['(XXX) XXX-XXXX'],                    placeholder: '(701) 234-5678',   min: 10, max: 10 },
+    { name: 'China',                     flag: '🇨🇳', ddi: '+86',   masks: ['XXX XXXX XXXX'],                      placeholder: '138 0013 8000',    min: 11, max: 11 },
+    { name: 'Coreia do Sul',             flag: '🇰🇷', ddi: '+82',   masks: ['XX XXXX XXXX'],                       placeholder: '10 1234 5678',     min: 10, max: 10 },
+    { name: 'Emirados Árabes Unidos',    flag: '🇦🇪', ddi: '+971',  masks: ['XX XXX XXXX'],                        placeholder: '50 123 4567',      min: 9,  max: 9  },
+    { name: 'Filipinas',                 flag: '🇵🇭', ddi: '+63',   masks: ['XXX XXX XXXX'],                       placeholder: '912 345 6789',     min: 10, max: 10 },
+    { name: 'Hong Kong',                 flag: '🇭🇰', ddi: '+852',  masks: ['XXXX XXXX'],                          placeholder: '9123 4567',        min: 8,  max: 8  },
+    { name: 'Índia',                     flag: '🇮🇳', ddi: '+91',   masks: ['XXXXX XXXXX'],                        placeholder: '91234 56789',      min: 10, max: 10 },
+    { name: 'Indonésia',                 flag: '🇮🇩', ddi: '+62',   masks: ['XXX XXXX XXXX'],                      placeholder: '081 2345 6789',    min: 11, max: 11 },
+    { name: 'Iraque',                    flag: '🇮🇶', ddi: '+964',  masks: ['XXX XXX XXXX'],                       placeholder: '078 123 4567',     min: 10, max: 10 },
+    { name: 'Irã',                       flag: '🇮🇷', ddi: '+98',   masks: ['XXX XXX XXXX'],                       placeholder: '091 234 5678',     min: 10, max: 10 },
+    { name: 'Israel',                    flag: '🇮🇱', ddi: '+972',  masks: ['XX XXX XXXX'],                        placeholder: '50 123 4567',      min: 9,  max: 9  },
+    { name: 'Japão',                     flag: '🇯🇵', ddi: '+81',   masks: ['XX XXXX XXXX'],                       placeholder: '90 1234 5678',     min: 10, max: 10 },
+    { name: 'Jordânia',                  flag: '🇯🇴', ddi: '+962',  masks: ['X XXXX XXXX'],                        placeholder: '7 9123 4567',      min: 9,  max: 9  },
+    { name: 'Kuwait',                    flag: '🇰🇼', ddi: '+965',  masks: ['XXXX XXXX'],                          placeholder: '5012 3456',        min: 8,  max: 8  },
+    { name: 'Laos',                      flag: '🇱🇦', ddi: '+856',  masks: ['XX XXX XXXX'],                        placeholder: '20 234 5678',      min: 9,  max: 9  },
+    { name: 'Líbano',                    flag: '🇱🇧', ddi: '+961',  masks: ['XX XXX XXX'],                         placeholder: '70 123 456',       min: 8,  max: 8  },
+    { name: 'Macau',                     flag: '🇲🇴', ddi: '+853',  masks: ['XXXX XXXX'],                          placeholder: '6612 3456',        min: 8,  max: 8  },
+    { name: 'Malásia',                   flag: '🇲🇾', ddi: '+60',   masks: ['XX XXXX XXXX'],                       placeholder: '12 3456 7890',     min: 10, max: 10 },
+    { name: 'Maldivas',                  flag: '🇲🇻', ddi: '+960',  masks: ['XXX XXXX'],                           placeholder: '912 3456',         min: 7,  max: 7  },
+    { name: 'Mongólia',                  flag: '🇲🇳', ddi: '+976',  masks: ['XXXX XXXX'],                          placeholder: '9123 4567',        min: 8,  max: 8  },
+    { name: 'Myanmar',                   flag: '🇲🇲', ddi: '+95',   masks: ['XX XXX XXXX'],                        placeholder: '09 123 4567',      min: 9,  max: 9  },
+    { name: 'Nepal',                     flag: '🇳🇵', ddi: '+977',  masks: ['XXX XXXXXXX'],                        placeholder: '098 1234567',      min: 10, max: 10 },
+    { name: 'Omã',                       flag: '🇴🇲', ddi: '+968',  masks: ['XXXX XXXX'],                          placeholder: '9212 3456',        min: 8,  max: 8  },
+    { name: 'Paquistão',                 flag: '🇵🇰', ddi: '+92',   masks: ['XXX XXX XXXX'],                       placeholder: '301 234 5678',     min: 10, max: 10 },
+    { name: 'Qatar',                     flag: '🇶🇦', ddi: '+974',  masks: ['XXXX XXXX'],                          placeholder: '3312 3456',        min: 8,  max: 8  },
+    { name: 'Quirguistão',               flag: '🇰🇬', ddi: '+996',  masks: ['XXX XXX XXX'],                        placeholder: '700 123 456',      min: 9,  max: 9  },
+    { name: 'Singapura',                 flag: '🇸🇬', ddi: '+65',   masks: ['XXXX XXXX'],                          placeholder: '8123 4567',        min: 8,  max: 8  },
+    { name: 'Sri Lanka',                 flag: '🇱🇰', ddi: '+94',   masks: ['XX XXX XXXX'],                        placeholder: '71 234 5678',      min: 9,  max: 9  },
+    { name: 'Síria',                     flag: '🇸🇾', ddi: '+963',  masks: ['XXX XXX XXX'],                        placeholder: '944 123 456',      min: 9,  max: 9  },
+    { name: 'Tadjiquistão',              flag: '🇹🇯', ddi: '+992',  masks: ['XX XXX XXXX'],                        placeholder: '93 123 4567',      min: 9,  max: 9  },
+    { name: 'Tailândia',                 flag: '🇹🇭', ddi: '+66',   masks: ['XX XXXX XXXX'],                       placeholder: '08 1234 5678',     min: 10, max: 10 },
+    { name: 'Taiwan',                    flag: '🇹🇼', ddi: '+886',  masks: ['XXX XXX XXX'],                        placeholder: '091 234 567',      min: 9,  max: 9  },
+    { name: 'Timor-Leste',               flag: '🇹🇱', ddi: '+670',  masks: ['XXXX XXXX'],                          placeholder: '7712 3456',        min: 8,  max: 8  },
+    { name: 'Turquemenistão',            flag: '🇹🇲', ddi: '+993',  masks: ['XX XXXXXX'],                          placeholder: '65 123456',        min: 8,  max: 8  },
+    { name: 'Uzbequistão',               flag: '🇺🇿', ddi: '+998',  masks: ['XX XXX XXXX'],                        placeholder: '93 123 4567',      min: 9,  max: 9  },
+    { name: 'Vietnã',                    flag: '🇻🇳', ddi: '+84',   masks: ['XXX XXX XXXX'],                       placeholder: '091 234 5678',     min: 10, max: 10 },
+    { name: 'Iêmen',                     flag: '🇾🇪', ddi: '+967',  masks: ['XXX XXX XXX'],                        placeholder: '712 345 678',      min: 9,  max: 9  },
+    { name: 'Bahrein',                   flag: '🇧🇭', ddi: '+973',  masks: ['XXXX XXXX'],                          placeholder: '3312 3456',        min: 8,  max: 8  },
+
+    // ─── ÁFRICA ──────────────────────────────────────────────────────
+    { name: 'África do Sul',             flag: '🇿🇦', ddi: '+27',   masks: ['XX XXX XXXX'],                        placeholder: '71 234 5678',      min: 9,  max: 9  },
+    { name: 'Algéria',                   flag: '🇩🇿', ddi: '+213',  masks: ['XXX XX XX XX'],                       placeholder: '055 12 34 56',     min: 9,  max: 9  },
+    { name: 'Angola',                    flag: '🇦🇴', ddi: '+244',  masks: ['XXX XXX XXX'],                        placeholder: '923 123 456',      min: 9,  max: 9  },
+    { name: 'Benim',                     flag: '🇧🇯', ddi: '+229',  masks: ['XX XX XX XX'],                        placeholder: '97 12 34 56',      min: 8,  max: 8  },
+    { name: 'Botsuana',                  flag: '🇧🇼', ddi: '+267',  masks: ['XX XXX XXX'],                         placeholder: '71 234 567',       min: 8,  max: 8  },
+    { name: 'Burkina Faso',              flag: '🇧🇫', ddi: '+226',  masks: ['XX XX XX XX'],                        placeholder: '70 12 34 56',      min: 8,  max: 8  },
+    { name: 'Burundi',                   flag: '🇧🇮', ddi: '+257',  masks: ['XX XX XXXX'],                         placeholder: '79 12 3456',       min: 8,  max: 8  },
+    { name: 'Cabo Verde',                flag: '🇨🇻', ddi: '+238',  masks: ['XXX XXXX'],                           placeholder: '991 2345',         min: 7,  max: 7  },
+    { name: 'Camarões',                  flag: '🇨🇲', ddi: '+237',  masks: ['X XXX XX XX'],                        placeholder: '6 712 34 56',      min: 8,  max: 8  },
+    { name: 'Chade',                     flag: '🇹🇩', ddi: '+235',  masks: ['XX XX XX XX'],                        placeholder: '63 12 34 56',      min: 8,  max: 8  },
+    { name: 'Comores',                   flag: '🇰🇲', ddi: '+269',  masks: ['XXX XXXX'],                           placeholder: '321 2345',         min: 7,  max: 7  },
+    { name: 'Congo (Brazzaville)',        flag: '🇨🇬', ddi: '+242',  masks: ['XX XXX XXXX'],                        placeholder: '06 123 4567',      min: 9,  max: 9  },
+    { name: 'Congo (RDC)',               flag: '🇨🇩', ddi: '+243',  masks: ['XXX XXX XXX'],                        placeholder: '081 234 567',      min: 9,  max: 9  },
+    { name: 'Costa do Marfim',           flag: '🇨🇮', ddi: '+225',  masks: ['XX XX XX XX XX'],                     placeholder: '07 12 34 56 78',   min: 10, max: 10 },
+    { name: 'Egito',                     flag: '🇪🇬', ddi: '+20',   masks: ['XXX XXX XXXX'],                       placeholder: '010 1234 5678',    min: 10, max: 10 },
+    { name: 'Eritreia',                  flag: '🇪🇷', ddi: '+291',  masks: ['X XXX XXX'],                          placeholder: '7 123 456',        min: 7,  max: 7  },
+    { name: 'Etiópia',                   flag: '🇪🇹', ddi: '+251',  masks: ['XX XXX XXXX'],                        placeholder: '09 123 4567',      min: 9,  max: 9  },
+    { name: 'Gabão',                     flag: '🇬🇦', ddi: '+241',  masks: ['X XX XX XX'],                         placeholder: '0 60 12 34',       min: 7,  max: 7  },
+    { name: 'Gâmbia',                    flag: '🇬🇲', ddi: '+220',  masks: ['XXX XXXX'],                           placeholder: '301 2345',         min: 7,  max: 7  },
+    { name: 'Gana',                      flag: '🇬🇭', ddi: '+233',  masks: ['XX XXX XXXX'],                        placeholder: '24 123 4567',      min: 9,  max: 9  },
+    { name: 'Guiné',                     flag: '🇬🇳', ddi: '+224',  masks: ['XXX XXX XXX'],                        placeholder: '621 123 456',      min: 9,  max: 9  },
+    { name: 'Guiné-Bissau',              flag: '🇬🇼', ddi: '+245',  masks: ['XXX XXXX'],                           placeholder: '955 1234',         min: 7,  max: 7  },
+    { name: 'Guiné Equatorial',          flag: '🇬🇶', ddi: '+240',  masks: ['XXX XXX XXX'],                        placeholder: '222 123 456',      min: 9,  max: 9  },
+    { name: 'Lesoto',                    flag: '🇱🇸', ddi: '+266',  masks: ['XXXX XXXX'],                          placeholder: '5012 3456',        min: 8,  max: 8  },
+    { name: 'Libéria',                   flag: '🇱🇷', ddi: '+231',  masks: ['XX XXX XXXX'],                        placeholder: '77 123 4567',      min: 9,  max: 9  },
+    { name: 'Líbia',                     flag: '🇱🇾', ddi: '+218',  masks: ['XX XXX XXXX'],                        placeholder: '91 123 4567',      min: 9,  max: 9  },
+    { name: 'Madagascar',                flag: '🇲🇬', ddi: '+261',  masks: ['XX XX XXX XX'],                       placeholder: '32 12 345 67',     min: 9,  max: 9  },
+    { name: 'Malawi',                    flag: '🇲🇼', ddi: '+265',  masks: ['XXX XX XXXX'],                        placeholder: '099 12 3456',      min: 9,  max: 9  },
+    { name: 'Mali',                      flag: '🇲🇱', ddi: '+223',  masks: ['XX XX XX XX'],                        placeholder: '66 12 34 56',      min: 8,  max: 8  },
+    { name: 'Marrocos',                  flag: '🇲🇦', ddi: '+212',  masks: ['XXX XXX XXX'],                        placeholder: '0612 345 678',     min: 9,  max: 9  },
+    { name: 'Maurício',                  flag: '🇲🇺', ddi: '+230',  masks: ['XXXX XXXX'],                          placeholder: '5712 3456',        min: 8,  max: 8  },
+    { name: 'Mauritânia',                flag: '🇲🇷', ddi: '+222',  masks: ['XXXX XXXX'],                          placeholder: '2212 3456',        min: 8,  max: 8  },
+    { name: 'Moçambique',                flag: '🇲🇿', ddi: '+258',  masks: ['XX XXX XXXX'],                        placeholder: '82 123 4567',      min: 9,  max: 9  },
+    { name: 'Namíbia',                   flag: '🇳🇦', ddi: '+264',  masks: ['XX XXX XXXX'],                        placeholder: '81 123 4567',      min: 9,  max: 9  },
+    { name: 'Níger',                     flag: '🇳🇪', ddi: '+227',  masks: ['XX XX XX XX'],                        placeholder: '96 12 34 56',      min: 8,  max: 8  },
+    { name: 'Nigéria',                   flag: '🇳🇬', ddi: '+234',  masks: ['XXX XXX XXXX'],                       placeholder: '080 123 4567',     min: 10, max: 10 },
+    { name: 'Quênia',                    flag: '🇰🇪', ddi: '+254',  masks: ['XXX XXX XXX'],                        placeholder: '0712 345 678',     min: 9,  max: 9  },
+    { name: 'Rep. Centro-Africana',      flag: '🇨🇫', ddi: '+236',  masks: ['XX XX XX XX'],                        placeholder: '72 12 34 56',      min: 8,  max: 8  },
+    { name: 'Ruanda',                    flag: '🇷🇼', ddi: '+250',  masks: ['XXX XXX XXX'],                        placeholder: '078 123 456',      min: 9,  max: 9  },
+    { name: 'Santo Tomé e Príncipe',     flag: '🇸🇹', ddi: '+239',  masks: ['XXX XXXX'],                           placeholder: '981 2345',         min: 7,  max: 7  },
+    { name: 'Senegal',                   flag: '🇸🇳', ddi: '+221',  masks: ['XX XXX XXXX'],                        placeholder: '77 123 4567',      min: 9,  max: 9  },
+    { name: 'Serra Leoa',                flag: '🇸🇱', ddi: '+232',  masks: ['XX XXX XXX'],                         placeholder: '76 123 456',       min: 8,  max: 8  },
+    { name: 'Seychelles',                flag: '🇸🇨', ddi: '+248',  masks: ['X XXX XXX'],                          placeholder: '2 512 345',        min: 7,  max: 7  },
+    { name: 'Somália',                   flag: '🇸🇴', ddi: '+252',  masks: ['XX XXX XXXX'],                        placeholder: '61 234 5678',      min: 9,  max: 9  },
+    { name: 'Sudão',                     flag: '🇸🇩', ddi: '+249',  masks: ['XXX XXX XXXX'],                       placeholder: '091 234 5678',     min: 10, max: 10 },
+    { name: 'Sudão do Sul',              flag: '🇸🇸', ddi: '+211',  masks: ['XXX XXX XXX'],                        placeholder: '091 234 567',      min: 9,  max: 9  },
+    { name: 'Suazilândia',               flag: '🇸🇿', ddi: '+268',  masks: ['XXXX XXXX'],                          placeholder: '7612 3456',        min: 8,  max: 8  },
+    { name: 'Tanzânia',                  flag: '🇹🇿', ddi: '+255',  masks: ['XXX XXX XXX'],                        placeholder: '071 234 567',      min: 9,  max: 9  },
+    { name: 'Togo',                      flag: '🇹🇬', ddi: '+228',  masks: ['XX XX XX XX'],                        placeholder: '90 12 34 56',      min: 8,  max: 8  },
+    { name: 'Tunísia',                   flag: '🇹🇳', ddi: '+216',  masks: ['XX XXX XXX'],                         placeholder: '20 123 456',       min: 8,  max: 8  },
+    { name: 'Uganda',                    flag: '🇺🇬', ddi: '+256',  masks: ['XXX XXX XXX'],                        placeholder: '070 123 456',      min: 9,  max: 9  },
+    { name: 'Zâmbia',                    flag: '🇿🇲', ddi: '+260',  masks: ['XX XXX XXXX'],                        placeholder: '96 123 4567',      min: 9,  max: 9  },
+    { name: 'Zimbábue',                  flag: '🇿🇼', ddi: '+263',  masks: ['XX XXX XXXX'],                        placeholder: '71 123 4567',      min: 9,  max: 9  },
+    { name: 'Djibuti',                   flag: '🇩🇯', ddi: '+253',  masks: ['XX XX XX XX'],                        placeholder: '77 12 34 56',      min: 8,  max: 8  },
+
+    // ─── OCEANIA ─────────────────────────────────────────────────────
+    { name: 'Austrália',                 flag: '🇦🇺', ddi: '+61',   masks: ['XXXX XXX XXX'],                       placeholder: '0412 345 678',     min: 9,  max: 9  },
+    { name: 'Fiji',                      flag: '🇫🇯', ddi: '+679',  masks: ['XXX XXXX'],                           placeholder: '701 2345',         min: 7,  max: 7  },
+    { name: 'Micronésia',                flag: '🇫🇲', ddi: '+691',  masks: ['XXX XXXX'],                           placeholder: '320 1234',         min: 7,  max: 7  },
+    { name: 'Nova Zelândia',             flag: '🇳🇿', ddi: '+64',   masks: ['XX XXX XXXX'],                        placeholder: '021 234 5678',     min: 9,  max: 9  },
+    { name: 'Papua Nova Guiné',          flag: '🇵🇬', ddi: '+675',  masks: ['XXX XXXX'],                           placeholder: '701 2345',         min: 7,  max: 8  },
+    { name: 'Ilhas Salomão',             flag: '🇸🇧', ddi: '+677',  masks: ['XXX XXXX'],                           placeholder: '742 1234',         min: 7,  max: 7  },
+    { name: 'Samoa',                     flag: '🇼🇸', ddi: '+685',  masks: ['XX XXXX'],                            placeholder: '72 1234',          min: 6,  max: 7  },
+    { name: 'Tonga',                     flag: '🇹🇴', ddi: '+676',  masks: ['XXX XXXX'],                           placeholder: '771 2345',         min: 7,  max: 7  },
+    { name: 'Vanuatu',                   flag: '🇻🇺', ddi: '+678',  masks: ['XXX XXXX'],                           placeholder: '555 1234',         min: 7,  max: 7  },
+  ];
+
+  var selectedCountry = COUNTRIES[0];
+
+  function applyPhoneMask(raw, country) {
+    // Strip DDI prefix if already present (idempotent)
+    var prefix = country.ddi + ' ';
+    var stripped = raw.startsWith(prefix) ? raw.slice(prefix.length) : raw;
+    var digits = stripped.replace(/\D/g, '').slice(0, country.max);
+    if (!digits.length) return '';
+    var mask = country.masks[0];
+    if (country.masks.length > 1) {
+      var shortLen = (country.masks[0].match(/X/g) || []).length;
+      if (digits.length > shortLen) mask = country.masks[1];
+    }
+    var result = '';
+    var di = 0;
+    for (var i = 0; i < mask.length; i++) {
+      if (di >= digits.length) break;
+      result += mask[i] === 'X' ? digits[di++] : mask[i];
+    }
+    return prefix + result; // e.g. "+55 (17) 99268-6970"
+  }
+
+  function formatPhoneForPayload(raw) {
+    // Returns the full international format already built by applyPhoneMask
+    return applyPhoneMask(raw, selectedCountry);
+  }
+
+  /* ── DDI Dropdown Logic ── */
+  var ddiBtn      = document.getElementById('ddi-btn');
+  var ddiDropdown = document.getElementById('ddi-dropdown');
+  var ddiSearch   = document.getElementById('ddi-search');
+  var ddiList     = document.getElementById('ddi-list');
+  var ddiFlag     = document.getElementById('ddi-flag');
+  var ddiCode     = document.getElementById('ddi-code');
+  var phoneInput  = document.getElementById('f-phone');
+
+  function buildList(query) {
+    var q = (query || '').toLowerCase().replace(/[+]/g, '');
+    ddiList.innerHTML = '';
+    COUNTRIES.filter(function(c) {
+      return !q || c.name.toLowerCase().includes(q) || c.ddi.replace('+','').includes(q);
+    }).forEach(function(c) {
+      var li = document.createElement('li');
+      li.className = 'ddi-item' + (c === selectedCountry ? ' selected' : '');
+      li.setAttribute('role', 'option');
+      li.setAttribute('aria-selected', c === selectedCountry ? 'true' : 'false');
+      li.innerHTML = '<span class="ddi-item__flag">' + c.flag + '</span>'
+                   + '<span class="ddi-item__name">' + c.name + '</span>'
+                   + '<span class="ddi-item__code">' + c.ddi + '</span>';
+      li.addEventListener('click', function() { selectCountry(c); });
+      ddiList.appendChild(li);
+    });
+  }
+
+  function selectCountry(c) {
+    selectedCountry = c;
+    ddiFlag.textContent = c.flag;
+    ddiCode.textContent = c.ddi;
+    phoneInput.placeholder = c.ddi + ' ' + c.placeholder;
+    phoneInput.value = '';
+    closeDDI();
+    buildList('');
+    phoneInput.focus();
+  }
+
+  function openDDI() {
+    ddiBtn.classList.add('open');
+    ddiDropdown.classList.add('open');
+    ddiBtn.setAttribute('aria-expanded', 'true');
+    ddiSearch.value = '';
+    buildList('');
+    setTimeout(function() { ddiSearch.focus(); }, 50);
+  }
+
+  function closeDDI() {
+    ddiBtn.classList.remove('open');
+    ddiDropdown.classList.remove('open');
+    ddiBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  ddiBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    ddiDropdown.classList.contains('open') ? closeDDI() : openDDI();
+  });
+
+  ddiSearch.addEventListener('input', function() { buildList(this.value); });
+  ddiSearch.addEventListener('click', function(e) { e.stopPropagation(); });
+
+  document.addEventListener('click', function(e) {
+    if (!document.getElementById('ddi-wrap').contains(e.target)) closeDDI();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDDI();
+  });
+
+  buildList('');
+
+  /* ── Phone masking — DDI prefix locked ── */
+  // Init placeholder with DDI
+  phoneInput.placeholder = selectedCountry.ddi + ' ' + selectedCountry.placeholder;
+
+  phoneInput.addEventListener('input', function () {
+    var prefix   = selectedCountry.ddi + ' ';
+    var prevLen  = this.value.length;
+    var cursorPos = this.selectionStart;
+    this.value   = applyPhoneMask(this.value, selectedCountry);
+    var diff     = this.value.length - prevLen;
+    var newCursor = Math.max(prefix.length, cursorPos + diff);
+    this.setSelectionRange(newCursor, newCursor);
+  });
+
+  phoneInput.addEventListener('keydown', function (e) {
+    var prefix = selectedCountry.ddi + ' ';
+    var start  = this.selectionStart;
+    var end    = this.selectionEnd;
+    // Block deletion of the DDI prefix
+    if (start === end && start <= prefix.length &&
+        (e.key === 'Backspace' || e.key === 'Delete')) {
+      e.preventDefault();
+    }
+    // Block moving cursor into prefix area
+    if (start < prefix.length && e.key === 'ArrowLeft') {
+      e.preventDefault();
+      this.setSelectionRange(prefix.length, prefix.length);
+    }
+  });
+
+  phoneInput.addEventListener('click', function () {
+    var prefix = selectedCountry.ddi + ' ';
+    if (this.value.startsWith(prefix) && this.selectionStart < prefix.length) {
+      this.setSelectionRange(prefix.length, prefix.length);
+    }
+  });
+
+  phoneInput.addEventListener('focus', function () {
+    var prefix = selectedCountry.ddi + ' ';
+    if (this.value && this.selectionStart < prefix.length) {
+      setTimeout(function (el) { el.setSelectionRange(prefix.length, prefix.length); }, 0, this);
+    }
+  });
+
+  var form      = document.getElementById('bigbuum-form');
+  var submitBtn = document.getElementById('submit-btn');
+  var errorBox  = document.getElementById('form-error');
+  var modal     = document.getElementById('modal');
+
+  function showError(msg) { errorBox.style.display = 'block'; errorBox.textContent = msg; }
+  function clearError()   { errorBox.style.display = 'none';  errorBox.textContent = ''; }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    clearError();
+
+    var name  = document.getElementById('f-name').value.trim();
+    var email = document.getElementById('f-email').value.trim();
+    var phone = document.getElementById('f-phone').value.trim();
+
+    if (!name)  { showError('Por favor, informe seu nome.'); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError('Por favor, informe um e-mail válido.'); return;
+    }
+    var _ddiLen = selectedCountry.ddi.replace(/\D/g, '').length;
+    var _regLen = phone.replace(/\D/g, '').length - _ddiLen;
+    if (!phone || _regLen < selectedCountry.min) {
+      showError('Por favor, informe um número válido para ' + selectedCountry.name + '.'); return;
+    }
+
+    var _utms = getAllUTMs();
+    var payload = {
+      nome:         name,
+      email:        email,
+      whatsapp:     formatPhoneForPayload(phone),
+      pais:         selectedCountry.name,
+      ddi:          selectedCountry.ddi,
+      utm_source:   _utms.utm_source,
+      utm_medium:   _utms.utm_medium,
+      utm_campaign: _utms.utm_campaign,
+      utm_term:     _utms.utm_term,
+      utm_content:  _utms.utm_content,
+      origem_url:   window.location.href,
+      timestamp:    new Date().toISOString()
+    };
+
+    submitBtn.classList.add('loading');
+    submitBtn.textContent = 'Enviando…';
+
+    try {
+      var res = await fetch('https://n8n.eliel.work/webhook/joymara-bigbuum', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      form.reset();
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } catch (err) {
+      showError('Ocorreu um erro ao enviar. Tente novamente.');
+      console.error('[BigBuum form]', err);
+    } finally {
+      submitBtn.classList.remove('loading');
+      submitBtn.textContent = 'Confirmar Inscrição';
+    }
+  });
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  /* ── Revelar resultado ao clicar ── */
+  (function () {
+    document.querySelectorAll('.fade-card').forEach(function (card) {
+      var btn = card.querySelector('.gcard__reveal');
+      card.addEventListener('click', function () {
+        var showing = card.classList.toggle('show-depois');
+        if (btn) btn.textContent = showing ? '← Ver antes' : 'Ver resultado →';
+      });
+    });
+  })();
+
+})();
+</script>
+</body>
+</html>
